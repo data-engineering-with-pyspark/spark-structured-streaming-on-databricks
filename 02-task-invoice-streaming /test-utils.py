@@ -43,19 +43,24 @@ class invoiceStreamTestSuite():
         print("Testing first iteration of invoice stream...") 
         self.ingestData(1)
         self.waitForMicroBatch()        
-        self.assertResult(1249)
+        self.assertResult(1253)
         print("Validation passed.\n")
 
         print("Testing second iteration of invoice stream...") 
         self.ingestData(2)
         self.waitForMicroBatch()
-        self.assertResult(2506)
+        self.assertResult(2510)
         print("Validation passed.\n") 
 
         print("Testing third iteration of invoice stream...") 
         self.ingestData(3)
         self.waitForMicroBatch()
-        self.assertResult(3990)
+        self.assertResult(3994)
         print("Validation passed.\n")
 
         streamQuery.stop()
+
+# COMMAND ----------
+
+display(spark.sql("select * from invoice_line_items"))#.show()
+
